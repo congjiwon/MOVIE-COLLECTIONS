@@ -44,12 +44,20 @@ input {
 }
 
 .card {
-  background-color: brown;
+  background-color: aliceblue;
   width: 300px;
-  height: 400px;
+  height: 500px;
   margin: 20px 0 20px 0;
 }
 
+#title,
+#score,
+#explanation {
+  border: solid brown;
+}
+
 img {
-  background-size: cover;
+  width: 150px;
+  height: 200px;
+  /* background-size: cover; */
 }
