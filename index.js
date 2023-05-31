@@ -1,4 +1,3 @@
-let movies = [];
 const cardWrapper = document.getElementById("card-wrapper");
 const cards = document.getElementsByClassName("card");
 const input = document.getElementById("input");
@@ -20,8 +19,6 @@ fetch(
   .then((response) => response.json())
   .then((response) => {
     let arr = response.results; //tmdb에서 api 받아와서 arr에 넣어주기
-    // console.log(arr);
-    movies.push(response.results);
 
     const makeCard = function (arr) {
       arr.forEach((a) => {
@@ -52,7 +49,6 @@ fetch(
         arr.title.toLowerCase().includes(inputMovieTitle)
       );
 
-      //입력받은 값이 현재 영화리스트의 제목과 동일한 것이 있을때 해당영화카드만 보이게
       if (filteredMovies.length >= 1) {
         cardWrapper.innerHTML = "";
         console.log(filteredMovies);
