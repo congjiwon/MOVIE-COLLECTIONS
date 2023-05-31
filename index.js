@@ -1,6 +1,8 @@
 let movies = [];
 const cardWrapper = document.getElementById("card-wrapper");
-const card = document.querySelector(".card");
+const cards = document.getElementsByClassName("card");
+const input = document.getElementById("input");
+const searchBtn = document.getElementById("search_btn");
 
 const options = {
   method: "GET",
@@ -18,18 +20,18 @@ fetch(
   .then((response) => response.json())
   .then((response) => {
     let arr = response.results; //tmdb에서 api 받아와서 arr에 넣어주기
-    console.log(arr);
+    // console.log(arr);
+    movies.push(response.results);
 
-    arr.forEach((a) => {
-      let title = a["title"];
-      let overview = a["overview"];
-      let poster_path = a["poster_path"];
-      let vote_average = a["vote_average"];
-      let id = a["id"];
+    const makeCard = function (arr) {
+      arr.forEach((a) => {
+        let title = a["title"];
+        let overview = a["overview"];
+        let poster_path = a["poster_path"];
+        let vote_average = a["vote_average"];
+        let id = a["id"];
 
-      console.log(poster_path);
-
-      let temp_html = `<div class="card" onclick="alert(${id})">
+        let temp_html = `<div class="card" onclick="alert(${id})">
                               <img src="https://image.tmdb.org/t/p/w200${poster_path}" alt="" />
                               <h3 id="title">${title}</h3>
                               <p id="score">score: ${vote_average}</p>
@@ -37,17 +39,28 @@ fetch(
                               <p id="explanation">${overview}</p>
                         </div>`;
 
-      cardWrapper.innerHTML += temp_html;
+        cardWrapper.innerHTML += temp_html;
+      });
+    };
+    makeCard(arr);
+
+    //검색창에 입력받은 제목과 카드의 내부카드제목이 같은 영화들을 filterdMovied
+
+    searchBtn.addEventListener("click", () => {
+      const inputMovieTitle = input.value.toLowerCase();
+      const filteredMovies = arr.filter((arr) =>
+        arr.title.toLowerCase().includes(inputMovieTitle)
+      );
+
+      //입력받은 값이 현재 영화리스트의 제목과 동일한 것이 있을때 해당영화카드만 보이게
+      if (filteredMovies.length >= 1) {
+        cardWrapper.innerHTML = "";
+        console.log(filteredMovies);
+        makeCard(filteredMovies);
+      } else {
+        //없으면 빈화면보이게
+        cardWrapper.innerHTML = "";
+      }
     });
   })
   .catch((err) => console.error(err));
-
-document.querySelector(".card").addEventListener("click", (event) => {
-  alert("dd");
-});
-
-// card.onclick = showID;
-// const showID = function () {
-//   alert();
-// };
-//card 클릭 -> alert 창 띄우기
