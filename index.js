@@ -41,15 +41,16 @@ fetch(
     };
     makeCard(arr);
 
-    //검색창에 입력받은 제목과 카드의 내부카드제목이 같은 영화들을 filterdMovied
-
+    //검색창에 입력받은 제목과 카드의 내부카드제목이 같은 영화들을 filter 메소드로 걸러주기
     searchBtn.addEventListener("click", () => {
+      //input창에 입력된 제목 데이터들을 받아오기
       const inputMovieTitle = input.value.toLowerCase();
       const filteredMovies = arr.filter((arr) =>
         arr.title.toLowerCase().includes(inputMovieTitle)
       );
 
       if (filteredMovies.length >= 1) {
+        //겹치는 영화제목 데이터가 있다면 해당 영화로 화면구성해주기
         cardWrapper.innerHTML = "";
         console.log(filteredMovies);
         makeCard(filteredMovies);
