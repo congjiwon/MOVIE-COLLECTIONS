@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: "DM Serif Display", serif;
 }
 
 .wrapper {
@@ -12,13 +13,20 @@
 
 #page_title {
   /* background-color: antiquewhite; */
+  margin: 70px 0 30px 0;
   width: 800px;
   height: 70px;
   letter-spacing: 0.1rem;
   font-size: 50px;
-  text-shadow: 0px 0px 10px brown;
+  text-shadow: 0px 0px 10px rgb(210, 158, 90);
   text-align: center;
   padding-top: 20px;
+  /* text-decoration-line: none; */
+}
+
+#page_title > a {
+  text-decoration-line: none;
+  color: black;
 }
 
 form {
@@ -30,16 +38,29 @@ form {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
+  align-items: center;
 }
 
 input {
   width: 400px;
   height: 40px;
+  outline: none;
+  /* background-color: beige; */
+}
+
+#search_btn {
+  margin: 10px;
+  width: 60px;
+  height: 40px;
+  background-color: rgb(232, 212, 185);
+  border: none;
 }
 
 #card-wrapper {
+  margin-top: 80px;
+  border-top: 1px solid burlywood;
+  padding-top: 50px;
   width: 100%;
-  /* background-color: aqua; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -47,23 +68,29 @@ input {
 }
 
 .card {
-  /* background-color: aliceblue; */
   width: 300px;
-  height: 650px;
+  height: 800px;
   margin: 20px 0 20px 0;
+  padding: 10px;
 }
 
-#title,
-#score {
+.card:hover {
+  box-shadow: 1px 1px 9px 1px burlywood;
+}
+
+.title,
+.score {
   border: solid burlywood;
   text-align: center;
   border-radius: 50px;
   padding: 8px;
+  margin: 10px;
 }
 
-img {
-  width: 200px;
+.img {
+  width: 270px;
   height: auto;
-  /* background-size: cover; */
-  margin-left: 50px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  vertical-align: top;
 }

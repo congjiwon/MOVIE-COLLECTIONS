@@ -29,11 +29,11 @@ fetch(
         let id = a["id"];
 
         let temp_html = `<div class="card" onclick="alert(${id})">
-                              <img src="https://image.tmdb.org/t/p/w200${poster_path}" alt="" />
-                              <h3 id="title">${title}</h3>
-                              <p id="score">score: ${vote_average}</p>
-                              <p id="movieId" style="display:none">${id}</p>
-                              <p id="explanation">${overview}</p>
+                              <img class="img" src="https://image.tmdb.org/t/p/w200${poster_path}" alt="" />
+                              <h3 class="title">${title}</h3>
+                              <p class="score">score: ${vote_average}</p>
+                              
+                              <p class="explanation">${overview}</p>
                         </div>`;
 
         cardWrapper.innerHTML += temp_html;
@@ -57,6 +57,7 @@ fetch(
       } else {
         //없으면 빈화면보이게
         cardWrapper.innerHTML = "";
+        // cardWrapper.innerHTML = `<p>검색결과가 없습니다</p>`
       }
     });
   })
