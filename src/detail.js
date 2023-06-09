@@ -41,10 +41,15 @@ let submitBtn = document.getElementById("submitBtn");
 let saveCommnetsArr = [];
 let commentsList = document.getElementById("comments-list");
 
-//브라우저 새로고침해도 localStorage에 저장된 댓글
+//브라우저 새로고침시 localStorage에 저장된 댓글데이터 가지고와서 화면 구성하기
 if (localStorage.getItem("comment")) {
   let commentArr = JSON.parse(localStorage.getItem("comment"));
+
+  // let movieId = location.href.substr(location.href.lastIndexOf("=") + 1);
+  // let filteredReviews = commentArr.filter((review) => review.Id === movieId);
+
   console.log(commentArr);
+
   saveCommnetsArr.push(...commentArr);
 
   for (let i = 0; i < commentArr.length; i++) {
@@ -54,9 +59,9 @@ if (localStorage.getItem("comment")) {
     let commentDiv = document.createElement("div");
     commentDiv.className = "comment";
     let template = `
-                        <p>${commentArr[i].name} <span>${score}</span>
-                        <span>${commentArr[i].time}</span></p>
-                        <p>${commentArr[i].content}<p>
+                        <p> <span class="commentName">${commentArr[i].name}</span> <span class="commentScore">${score}</span>
+                        <span class="commentTime">${commentArr[i].time}</span></p>
+                        <p class="commentContent">${commentArr[i].content}<p>
                         <button type="button" class="deleteBtn">삭제하기</button>
                         <button type="button" class="editBtn">수정하기</button>
     `;
@@ -106,6 +111,11 @@ submitBtn.addEventListener("click", (e) => {
 
   saveCommnets(comment);
   showComment();
+
+  input_name.value = "";
+  input_score.value = "";
+  input_password.value = "";
+  input_content.value = "";
 });
 
 //localstorage에서 저장된 댓글 데이터 가져와서 html에 보여주기
@@ -120,9 +130,9 @@ const showComment = function () {
     let commentDiv = document.createElement("div");
     commentDiv.className = "comment";
     let template = `
-                        <p>${commentObj[i].name} <span>${score}</span>
-                        <span>${commentObj[i].time}</span></p>
-                        <p>${commentObj[i].content}<p>
+                        <p><span class="commentName">${commentObj[i].name}</span> <span class="commentScore">${score}</span>
+                        <span class="commentTime">${commentObj[i].time}</span></p>
+                        <p class="commentContent">${commentObj[i].content}<p>
                         <button type="button" class="deleteBtn">삭제하기</button>
                         <button type="button" class="editBtn">수정하기</button>
 
@@ -151,10 +161,7 @@ const showComment = function () {
 //localstorage에 저장
 const saveCommnets = function (comment) {
   let commentsList = document.getElementById("comments-list");
-
   saveCommnetsArr.push(comment);
-  // console.log(saveCommnetsArr);
-
   const commentObj = JSON.stringify(saveCommnetsArr);
   localStorage.setItem("comment", commentObj);
 };
