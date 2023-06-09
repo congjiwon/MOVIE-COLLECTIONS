@@ -28,7 +28,7 @@ fetch(
         let vote_average = a["vote_average"];
         let id = a["id"];
 
-        let temp_html = `<div class="card" onclick="alert(${id})">
+        let temp_html = `<div class="card" onclick="location.href='detail.html?id='+${id}">
                               <img class="img" src="https://image.tmdb.org/t/p/w200${poster_path}" alt="" />
                               <h3 class="title">${title}</h3>
                               <p class="score">score: ${vote_average}</p>
@@ -59,6 +59,8 @@ fetch(
         cardWrapper.innerHTML = "";
         // cardWrapper.innerHTML = `<p>검색결과가 없습니다</p>`
       }
+
+      input.value = "";
     });
   })
   .catch((err) => console.error(err));

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/reset.css" />
+    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/detail.css" />
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+    </style>
+  </head>
+  <body>
+    <a href="./main.html">HOME</a>
+    <div id="container"> <header>
+      <h1 id="page_title">MOVIE COLLECTIONS</h1>
+    </header>
+    <main>
+      <div id="movieWrapper">
+        <div id="moviePoster"></div>
+        <div id="movie_info">
+          <p id="movieName"></p>
+          <p id="movieOriginName"></p>
+          <p id="movieReleasedDate"></p>
+          <p id="movieGenre"></p>
+          <p id="movieRuntime"></p>
+          <p id="movieRate"></p>
+          <div id="movieOverview"></div>
+        </div>
+      </main>          
+      <article id="comment-wrapper">
+        <section id="comment-maker">
+          <form action="">
+            <input type="text" id="name_input" placeholder="이름" />
+            <select id="score_input">
+              <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+              <option value="4">⭐️⭐️⭐️⭐️</option>
+              <option value="3">⭐️⭐️⭐️</option>
+              <option value="2">⭐️⭐️</option>
+              <option value="1">⭐️</option>
+            </select>
+            <input type="text" id="password_input" placeholder="비밀번호(숫자4자리)"/>
+            <button type="button" id="submitBtn">작성하기</button>
+            <br />
+            <textarea name="textarea" id="content" cols="100" rows="5" placeholder="댓글을 작성하세요" ></textarea>
+            
+          </form>
+        </section>
+        <section id="comments-list"></section>
+      </article>
+    </div>
+    <script src="./src/detail.js"></script>
+  </body>
+</html>

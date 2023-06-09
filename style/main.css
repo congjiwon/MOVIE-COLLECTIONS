@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: "DM Serif Display", serif;
+  font-family: "Noto Serif KR", serif;
 }
 
 .wrapper {
@@ -56,6 +56,10 @@ input {
   border: none;
 }
 
+#search_btn:hover {
+  background-color: rgb(200, 172, 136);
+}
+
 #card-wrapper {
   margin-top: 80px;
   border-top: 1px solid burlywood;
@@ -69,7 +73,7 @@ input {
 
 .card {
   width: 300px;
-  height: 800px;
+  height: 900px;
   margin: 20px 0 20px 0;
   padding: 10px;
 }
